@@ -1,25 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
 
-:root{
-/* ## Colors */
+:root {
+    /* ## Colors */
 
-/* ### Primary */
+    /* ### Primary */
 
---Scissors-Gradient: hsl(39, 89%, 49%) to hsl(40, 84%, 53%);
---Paper-Gradient: hsl(230, 89%, 62%) to hsl(230, 89%, 65%);
---Rock-Gradient: hsl(349, 71%, 52%) to hsl(349, 70%, 56%);
---Lizard-Gradient: hsl(261, 73%, 60%) to hsl(261, 72%, 63%);
---Cyan: hsl(189, 59%, 53%) to hsl(189, 58%, 57%);
+    --Scissors-Gradient: hsl(39, 89%, 49%), hsl(40, 84%, 53%);
+    --Paper-Gradient: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
+    --Rock-Gradient: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
+    --Lizard-Gradient: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
+    --Cyan: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
 
-/* ### Neutral */
+    /* ### Neutral */
 
---Dark-Text: hsl(229, 25%, 31%);
---Score-Text: hsl(229, 64%, 46%);
---Header-Outline: hsl(217, 16%, 45%);
+    --Dark-Text: hsl(229, 25%, 31%);
+    --Score-Text: hsl(229, 64%, 46%);
+    --Header-Outline: hsl(217, 16%, 45%);
+    --White: hsl(0, 0%, 100%);
 
-/* ### Background */
+    /* ### Background */
 
---Radial-Gradient: hsl(214, 47%, 23%) to hsl(237, 49%, 15%);
+    --Radial-Gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
 
 }
 
@@ -31,8 +32,129 @@
     padding: 0;
 }
 
-html{
+html {
     font-family: 'Barlow Semi Condensed', sans-serif;
     font-size: 16px;
 }
 
+body {
+    background: linear-gradient(var(--Radial-Gradient));
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    font-weight: 400;
+}
+
+header {
+    width: 90%;
+    height: 20%;
+    border: 3px solid var(--Header-Outline);
+    border-radius: 5px;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-score {
+    text-align: center;
+    background-color: var(--White);
+    border-radius: 5px;
+    padding: 5px 1rem;
+}
+
+.logo-game {
+    width: 120px;
+    height: 70px;
+}
+
+.title-score {
+    color: var(--Score-Text);
+    text-transform: uppercase;
+}
+
+#score {
+    font-size: 2rem;
+    color: var(--Dark-Text);
+    font-weight: 700;
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+}
+
+.btn-open-rules {
+    background-color: transparent;
+    border: 1px solid var(--White);
+    border-radius: 5px;
+    color: var(--White);
+    font-size: 1rem;
+    padding: 5px 2rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.step-1{
+    position: relative;
+    width: 400px;
+    height: 100%;
+}
+
+.control-default-desing {
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(var(--Paper-Gradient)) border-box;
+    border-radius: 50%;
+    border: 10px solid transparent;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    position: absolute;
+    cursor: pointer;
+}
+
+.step-1 :nth-child(2){
+    top: 10%;
+    left: 20%;
+}
+.step-1 :nth-child(3){
+    top: 10%;
+    right: 20%;
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(var(--Rock-Gradient)) border-box;
+}
+.step-1 :nth-child(4){
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(var(--Scissors-Gradient)) border-box;
+}
+
+.container-triangle{
+    z-index: -1;
+}
+
+.container-triangle > img{
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+main{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

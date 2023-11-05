@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="styles/style.css">
 
   <title>Rock, Paper, Scissors GAME</title>
 
@@ -13,23 +14,38 @@
 
 <body>
   <header>
-    <h1 class="title-header">Rock, Paper, Scissors</h1>
-    <div>
+    <img src="images/logo.svg" alt="logo-game" class="logo-game">
+    <div class="container-score">
       <h5 class="title-score">Score</h5>
-      <span id="score"></span>
+      <span id="score">12</span>
+
     </div>
-    <main class="container">
-      <span class="you-picked">You Picked</span>
-      <span class="house-picked">The House Picked</span>
-      <h2 class="result">You Win</h2>
-      <button id="play-again">Play Again</button>
-    </main>
-
-    <footer>
-      <button>Rules</button>
-    </footer>
-
   </header>
+  <main class="container">
+    <!-- <span class="you-picked">You Picked</span>
+    <span class="house-picked">The House Picked</span>
+    <h2 class="result">You Win</h2>
+    <button id="play-again">Play Again</button> -->
+
+    <section class="step-1">
+      <article class="container-triangle">
+        <img src="images/bg-triangle.svg" alt="triangle-figure">
+      </article>
+      <article class="control-default-desing">
+        <img src="images/icon-paper.svg" alt="paper-figure">
+      </article>
+      <article class="control-default-desing">
+        <img src="images/icon-scissors.svg" alt="scissors-figure">
+      </article>
+      <article class="control-default-desing">
+        <img src="images/icon-rock.svg" alt="rock-figure">
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <button class="btn-open-rules">Rules</button>
+  </footer>
 
 
 
