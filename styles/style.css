@@ -46,6 +46,7 @@ body {
     align-items: center;
     padding: 2rem 0;
     font-weight: 400;
+    position: static;
 }
 
 header {
@@ -92,10 +93,10 @@ footer {
     border: 1px solid var(--White);
     border-radius: 5px;
     color: var(--White);
-    font-size: 1rem;
+    font-size: .9rem;
     padding: 5px 2rem;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
 }
 
@@ -157,4 +158,57 @@ main{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.rules{
+    width: 100vh;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    background-color: var(--White);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1;
+}
+
+.rules > h2{
+    color: var(--Dark-Text);
+}
+
+#close-modal-rules{
+    cursor: pointer;
+}
+
+.d-none{
+    display: none;
+}
+
+@media(min-width: 767px){
+    .rules{
+        width: 55vh;
+        height: 60vh;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        border-radius: 5px;
+    }
+
+    #close-modal-rules{
+        position: absolute;
+        top: 7%;
+        right: 5%;
+    }
+
+    .rules > h2{
+        align-self: flex-start;
+        padding-left: 2rem;
+    }
+
+    footer {
+        text-align: end;
+        padding-right: 2rem;
+    }
 }
