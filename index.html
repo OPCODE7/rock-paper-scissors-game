@@ -22,12 +22,10 @@
     </div>
   </header>
   <main class="container">
-    <!-- <span class="you-picked">You Picked</span>
-    <span class="house-picked">The House Picked</span>
-    <h2 class="result">You Win</h2>
+    <!-- 
     <button id="play-again">Play Again</button> -->
 
-    <section class="step-1">
+    <section class="step-1 d-none">
       <article class="container-triangle">
         <img src="images/bg-triangle.svg" alt="triangle-figure">
       </article>
@@ -42,6 +40,22 @@
       </article>
     </section>
 
+    <section class="step-2">
+      <article class="your-option-picked-img">
+        <div class="picked-img control-default-desing">
+          <img src="images/icon-scissors.svg" alt="">
+        </div>
+        <span class="you-picked">You Picked</span>
+      </article>
+      <article class="house-option-picked-img">
+        <div class="picked-img shadow-bg-picked">
+          <img src="" alt="">
+        </div>
+        <span class="house-picked">The House Picked</span>
+      </article>
+      <!-- <h2 class="result">You Win</h2> -->
+    </section>
+
     <section class="rules d-none">
       <h2>RULES</h2>
       <img src="./images/image-rules.svg" alt="rules-game">
@@ -54,7 +68,7 @@
   </footer>
 
 
-<script src="./js/index.js"></script>
+  <script src="./js/index.js"></script>
 
 </body>
 

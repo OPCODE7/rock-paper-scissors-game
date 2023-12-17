@@ -21,7 +21,7 @@
     /* ### Background */
 
     --Radial-Gradient: hsl(214, 47%, 23%), hsl(237, 49%, 15%);
-
+    --shadow: hsl(237, 49%, 15%);
 }
 
 *,
@@ -181,6 +181,41 @@ main{
     cursor: pointer;
 }
 
+
+.step-2{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.your-option-picked-img,.house-option-picked-img{
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.you-picked,.house-picked{
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--White);
+    text-transform: uppercase;
+}
+
+.shadow-bg-picked{
+    border-radius: 50%;
+    background-color: var(--shadow);
+    opacity: .40;
+}
+
+.picked-img{
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+
 .d-none{
     display: none;
 }
@@ -210,5 +245,15 @@ main{
     footer {
         text-align: end;
         padding-right: 2rem;
+    }
+
+    .step-2{
+        width: 60%;
+        align-items: center;
+    }
+
+    .picked-img{
+        width: 150px;
+        height: 150px;
     }
 }
