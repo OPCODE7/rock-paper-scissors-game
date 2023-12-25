@@ -8,6 +8,11 @@ const $openRulesBtn = d.querySelector(".btn-open-rules"),
     $stepTwo = d.querySelector(".step-2");
 
 const srcImgObjects = ["images/icon-paper.svg", "images/icon-scissors.svg", "images/icon-rock.svg"];
+const objGradients = {
+    "images/icon-paper.svg": "paper-gradient",
+    "images/icon-scissors.svg": "scissors-gradient",
+    "images/icon-rock.svg": "rock-gradient"
+}
 
 
 d.addEventListener("click", e => {
@@ -24,6 +29,7 @@ d.addEventListener("click", e => {
         $stepTwo.classList.remove("d-none");
         $stepOne.classList.add("d-none");
         automaticSelection();
+        $imgYourObject.parentElement.classList.add(objGradients[$imgYourObject.getAttribute("src")]);
     }
 
     if (e.target.matches("#option-to-pick > *")) {
@@ -31,24 +37,33 @@ d.addEventListener("click", e => {
         $stepTwo.classList.remove("d-none");
         $stepOne.classList.add("d-none");
         automaticSelection();
+        $imgYourObject.parentElement.classList.add(objGradients[$imgYourObject.getAttribute("src")]);
     }
 });
 
 
 function automaticSelection() {
     $imgHouseObject.parentElement.classList.remove("shadow-bg-picked");
-    $imgHouseObject.parentElement.classList.add("control-default-desing"); 
-    let randomIndex = Math.floor(Math.random() * (0 - 3 + 1)) + 3;
+    $imgHouseObject.parentElement.classList.add("control-default-desing");
+    let randomIndex = Math.floor(Math.random() * 3);
     let iterator = -1;
     let interval = setInterval(() => {
         iterator++;
         if (iterator == 3) iterator = 0;
         $imgHouseObject.src = srcImgObjects[iterator];
-    }, 500);
+        let currentGradient= objGradients[$imgHouseObject.getAttribute("src")];
+
+        $imgHouseObject.parentElement.setAttribute("class",`picked-img control-default-desing ${currentGradient}`);
+        
+    }, 300);
 
     setTimeout(() => {
         clearInterval(interval);
         $imgHouseObject.src = srcImgObjects[randomIndex];
-    }, 6000);
+        $imgHouseObject.parentElement.classList.add(objGradients[$imgHouseObject.getAttribute("src")]);
+    }, 4000);
 }
 
+function whoWin(yourSelection, houseSelection) {
+
+}

@@ -106,9 +106,22 @@ footer {
     height: 100%;
 }
 
-.control-default-desing {
+.paper-gradient{
     background: linear-gradient(white, white) padding-box,
         linear-gradient(var(--Paper-Gradient)) border-box;
+}
+
+.rock-gradient{
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(var(--Rock-Gradient)) border-box;
+}
+
+.scissors-gradient{
+    background: linear-gradient(white, white) padding-box,
+    linear-gradient(var(--Scissors-Gradient)) border-box;
+}
+
+.control-default-desing {
     border-radius: 50%;
     border: 10px solid transparent;
     width: 100px;
@@ -121,6 +134,7 @@ footer {
     cursor: pointer;
 }
 
+
 .step-1 :nth-child(2){
     top: 10%;
     left: 20%;
@@ -128,15 +142,13 @@ footer {
 .step-1 :nth-child(3){
     top: 10%;
     right: 20%;
-    background: linear-gradient(white, white) padding-box,
-        linear-gradient(var(--Rock-Gradient)) border-box;
+   
 }
 .step-1 :nth-child(4){
     top: 50%;
     left: 50%;
     transform: translateX(-50%);
-    background: linear-gradient(white, white) padding-box,
-        linear-gradient(var(--Scissors-Gradient)) border-box;
+    
 }
 
 .container-triangle{
