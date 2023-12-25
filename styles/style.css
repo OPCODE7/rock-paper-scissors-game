@@ -100,25 +100,25 @@ footer {
     cursor: pointer;
 }
 
-.step-1{
+.step-1 {
     position: relative;
-    width: 400px;
+    width: 100%;
     height: 100%;
 }
 
-.paper-gradient{
+.paper-gradient {
     background: linear-gradient(white, white) padding-box,
         linear-gradient(var(--Paper-Gradient)) border-box;
 }
 
-.rock-gradient{
+.rock-gradient {
     background: linear-gradient(white, white) padding-box,
-    linear-gradient(var(--Rock-Gradient)) border-box;
+        linear-gradient(var(--Rock-Gradient)) border-box;
 }
 
-.scissors-gradient{
+.scissors-gradient {
     background: linear-gradient(white, white) padding-box,
-    linear-gradient(var(--Scissors-Gradient)) border-box;
+        linear-gradient(var(--Scissors-Gradient)) border-box;
 }
 
 .control-default-desing {
@@ -135,44 +135,47 @@ footer {
 }
 
 
-.step-1 :nth-child(2){
+.step-1 :nth-child(2) {
     top: 10%;
     left: 20%;
 }
-.step-1 :nth-child(3){
+
+.step-1 :nth-child(3) {
     top: 10%;
     right: 20%;
-   
+
 }
-.step-1 :nth-child(4){
+
+.step-1 :nth-child(4) {
     top: 50%;
     left: 50%;
     transform: translateX(-50%);
-    
+
 }
 
-.container-triangle{
+.container-triangle {
     z-index: -1;
 }
 
-.container-triangle > img{
+.container-triangle>img {
     width: 150px;
     height: 150px;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
-main{
+main {
     width: 100%;
     height: 50vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.rules{
+.rules {
     width: 100vh;
     height: 100vh;
     position: fixed;
@@ -185,23 +188,27 @@ main{
     z-index: 1;
 }
 
-.rules > h2{
+.rules>h2 {
     color: var(--Dark-Text);
 }
 
-#close-modal-rules{
+#close-modal-rules {
     cursor: pointer;
 }
 
 
-.step-2{
+.step-2 {
     width: 100%;
     height: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-.your-option-picked-img,.house-option-picked-img{
+
+.your-option-picked-img,
+.house-option-picked-img {
     height: 30vh;
     display: flex;
     flex-direction: column;
@@ -209,47 +216,78 @@ main{
     justify-content: space-between;
 }
 
-.you-picked,.house-picked{
+.you-picked,
+.house-picked {
     font-size: 1.1rem;
     font-weight: 700;
     color: var(--White);
     text-transform: uppercase;
 }
 
-.shadow-bg-picked{
+.shadow-bg-picked {
     border-radius: 50%;
     background-color: var(--shadow);
     opacity: .40;
 }
 
-.picked-img{
+.picked-img {
     position: relative;
     width: 120px;
     height: 120px;
 }
 
-.d-none{
+.results {
+    text-align: center;
+    width: 100%;
+}
+
+.who-whin {
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 3rem;
+    color: var(--White);
+}
+
+.winner-shadow {
+    box-shadow: hsla(228, 25%, 31%, 0.877) 0px 0px 0px 15px,
+        hsla(228, 25%, 31%, 0.781) 0px 0px 0px 40px,
+        hsla(228, 25%, 31%, 0.733) 0px 0px 0px 60px;
+    z-index: -1;
+}
+
+#play-again {
+    padding: 10px 3rem;
+    background-color: var(--White);
+    color: var(--Dark-Text);
+    font-weight: 600;
+    font-size: .9rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.d-none {
     display: none;
 }
 
-@media(min-width: 767px){
-    .rules{
+@media(min-width: 767px) {
+    .rules {
         width: 55vh;
         height: 60vh;
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%,-50%);
+        transform: translate(-50%, -50%);
         border-radius: 5px;
     }
 
-    #close-modal-rules{
+    #close-modal-rules {
         position: absolute;
         top: 7%;
         right: 5%;
     }
 
-    .rules > h2{
+    .rules>h2 {
         align-self: flex-start;
         padding-left: 2rem;
     }
@@ -259,13 +297,21 @@ main{
         padding-right: 2rem;
     }
 
-    .step-2{
+    .step-2 {
         width: 60%;
         align-items: center;
     }
 
-    .picked-img{
+    .picked-img {
         width: 150px;
         height: 150px;
+    }
+
+    .results {
+        width: auto;
+    }
+
+    .house-option-picked-img {
+        order: 1;
     }
 }
