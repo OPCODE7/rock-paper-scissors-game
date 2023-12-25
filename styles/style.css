@@ -101,9 +101,11 @@ footer {
 }
 
 .step-1 {
-    position: relative;
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+
 }
 
 .paper-gradient {
@@ -132,6 +134,12 @@ footer {
     z-index: 1;
     position: absolute;
     cursor: pointer;
+}
+
+.objects-container{
+    width: 400px;
+    height: 100%;
+    position: relative;
 }
 
 
@@ -269,6 +277,8 @@ main {
 .d-none {
     display: none;
 }
+
+
 
 @media(min-width: 767px) {
     .rules {

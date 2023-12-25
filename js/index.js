@@ -83,7 +83,6 @@ function automaticSelection() {
             $imgYourObject.parentElement.classList.add("winner-shadow");
         }else{
             $imgHouseObject.parentElement.classList.add("winner-shadow");
-
         }
 
         localStorage.setItem("score", score);
