@@ -52,20 +52,37 @@ d.addEventListener("click", e => {
         $containerResults.classList.add("d-none");
         $stepTwo.classList.add("d-none");
         $stepOne.classList.remove("d-none");
+
+        
+        if($imgHouseObject.parentElement.classList.contains("winner-shadow")){
+            $imgHouseObject.parentElement.classList.remove("winner-shadow");
+        }else if($imgYourObject.parentElement.classList.contains("winner-shadow")){
+            $imgYourObject.parentElement.classList.remove("winner-shadow");
+        }
+
+        for (const key in objGradients) {
+            if($imgYourObject.parentElement.classList.contains(objGradients[key])){
+                $imgYourObject.parentElement.classList.remove(objGradients[key]);
+            }
+
+            if($imgHouseObject.parentElement.classList.contains(objGradients[key])){
+                $imgHouseObject.parentElement.classList.remove(objGradients[key]);
+            }
+            
+        }
     }
 });
 
 
 function automaticSelection() {
-    $imgHouseObject.parentElement.classList.remove("shadow-bg-picked");
-    $imgHouseObject.parentElement.classList.add("control-default-desing");
+    let currentGradient= "";
     let randomIndex = Math.floor(Math.random() * 3);
     let iterator = -1;
     let interval = setInterval(() => {
         iterator++;
         if (iterator == 3) iterator = 0;
         $imgHouseObject.src = srcImgObjects[iterator];
-        let currentGradient = objGradients[$imgHouseObject.getAttribute("src")];
+        currentGradient = objGradients[$imgHouseObject.getAttribute("src")];
 
         $imgHouseObject.parentElement.setAttribute("class", `picked-img control-default-desing ${currentGradient}`);
 
@@ -75,24 +92,20 @@ function automaticSelection() {
         clearInterval(interval);
         
         $imgHouseObject.src = srcImgObjects[randomIndex];
+        $imgHouseObject.parentElement.classList.remove(currentGradient);
         $imgHouseObject.parentElement.classList.add(objGradients[$imgHouseObject.getAttribute("src")]);
         let result = whoWin($imgYourObject.parentElement.getAttribute("class").split(' ').pop(), $imgHouseObject.parentElement.getAttribute("class").split(' ').pop());
         $containerResults.classList.remove("d-none");
         $resultText.textContent = result;
-        if(result==="YOU-WIN"){
+        if(result==="YOU WIN"){
             $imgYourObject.parentElement.classList.add("winner-shadow");
-        }else{
+        }else if(result==="HOUSE WIN"){
             $imgHouseObject.parentElement.classList.add("winner-shadow");
         }
 
         localStorage.setItem("score", score);
         $score.textContent = localStorage.getItem("score");
-
-
-
     }, 4000);
-
-
 }
 
 function whoWin(yourSelection, houseSelection) {
