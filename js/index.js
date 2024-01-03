@@ -8,7 +8,9 @@ const $openRulesBtn = d.querySelector(".btn-open-rules"),
     $stepTwo = d.querySelector(".step-2"),
     $resultText = d.querySelector(".who-whin"),
     $containerResults = d.querySelector(".results"),
-    $score = d.querySelector("#score");
+    $score = d.querySelector("#score"),
+    $btnChangeGameVersion = d.querySelector(".v2"),
+    $stepOneV2 = d.querySelector(".step-1-v2");
 
 const srcImgObjects = ["images/icon-paper.svg", "images/icon-scissors.svg", "images/icon-rock.svg"];
 const objGradients = {
@@ -19,8 +21,8 @@ const objGradients = {
 
 let score = 0;
 
-d.addEventListener("DOMContentLoaded",e => {
-    $score.textContent= localStorage.getItem("score");
+d.addEventListener("DOMContentLoaded", e => {
+    $score.textContent = localStorage.getItem("score");
 });
 
 d.addEventListener("click", e => {
@@ -53,29 +55,43 @@ d.addEventListener("click", e => {
         $stepTwo.classList.add("d-none");
         $stepOne.classList.remove("d-none");
 
-        
-        if($imgHouseObject.parentElement.classList.contains("winner-shadow")){
+
+        if ($imgHouseObject.parentElement.classList.contains("winner-shadow")) {
             $imgHouseObject.parentElement.classList.remove("winner-shadow");
-        }else if($imgYourObject.parentElement.classList.contains("winner-shadow")){
+        } else if ($imgYourObject.parentElement.classList.contains("winner-shadow")) {
             $imgYourObject.parentElement.classList.remove("winner-shadow");
         }
 
         for (const key in objGradients) {
-            if($imgYourObject.parentElement.classList.contains(objGradients[key])){
+            if ($imgYourObject.parentElement.classList.contains(objGradients[key])) {
                 $imgYourObject.parentElement.classList.remove(objGradients[key]);
             }
 
-            if($imgHouseObject.parentElement.classList.contains(objGradients[key])){
+            if ($imgHouseObject.parentElement.classList.contains(objGradients[key])) {
                 $imgHouseObject.parentElement.classList.remove(objGradients[key]);
             }
-            
+
+
+        }
+    }
+
+    if (e.target === $btnChangeGameVersion) {
+        if (e.target.id === "game-v2") {
+            e.target.textContent = "PROBAR V2";
+            $stepOne.classList.remove("d-none");
+            $stepOneV2.classList.add("d-none");
+            e.target.id= "game-v1";
+        } else if (e.target.id==="game-v1") {
+            e.target.textContent = "ORIGINAL VERSION";
+            $stepOne.classList.add("d-none");
+            $stepOneV2.classList.remove("d-none");
+            e.target.id= "game-v2";
         }
     }
 });
 
-
 function automaticSelection() {
-    let currentGradient= "";
+    let currentGradient = "";
     let randomIndex = Math.floor(Math.random() * 3);
     let iterator = -1;
     let interval = setInterval(() => {
@@ -90,16 +106,16 @@ function automaticSelection() {
 
     setTimeout(() => {
         clearInterval(interval);
-        
+
         $imgHouseObject.src = srcImgObjects[randomIndex];
         $imgHouseObject.parentElement.classList.remove(currentGradient);
         $imgHouseObject.parentElement.classList.add(objGradients[$imgHouseObject.getAttribute("src")]);
         let result = whoWin($imgYourObject.parentElement.getAttribute("class").split(' ').pop(), $imgHouseObject.parentElement.getAttribute("class").split(' ').pop());
         $containerResults.classList.remove("d-none");
         $resultText.textContent = result;
-        if(result==="YOU WIN"){
+        if (result === "YOU WIN") {
             $imgYourObject.parentElement.classList.add("winner-shadow");
-        }else if(result==="HOUSE WIN"){
+        } else if (result === "HOUSE WIN") {
             $imgHouseObject.parentElement.classList.add("winner-shadow");
         }
 
@@ -116,10 +132,10 @@ function whoWin(yourSelection, houseSelection) {
         (yourSelection === "paper-gradient" && houseSelection === "rock-gradient") || (yourSelection === "rock-gradient" && houseSelection === "scissors-gradient")) {
         result = "YOU WIN";
         score++;
-    } else if((houseSelection === "scissors-gradient" && yourSelection === "paper-gradient") ||
-    (houseSelection === "paper-gradient" && yourSelection === "rock-gradient") || (houseSelection === "rock-gradient" && yourSelection === "scissors-gradient")) {
+    } else if ((houseSelection === "scissors-gradient" && yourSelection === "paper-gradient") ||
+        (houseSelection === "paper-gradient" && yourSelection === "rock-gradient") || (houseSelection === "rock-gradient" && yourSelection === "scissors-gradient")) {
         result = "HOUSE WIN";
-        if(score>0) score--;
+        if (score > 0) score--;
     }
 
     return result;

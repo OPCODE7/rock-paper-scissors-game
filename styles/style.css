@@ -9,7 +9,7 @@
     --Paper-Gradient: hsl(230, 89%, 62%), hsl(230, 89%, 65%);
     --Rock-Gradient: hsl(349, 71%, 52%), hsl(349, 70%, 56%);
     --Lizard-Gradient: hsl(261, 73%, 60%), hsl(261, 72%, 63%);
-    --Cyan: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
+    --Spock-Gradient: hsl(189, 59%, 53%), hsl(189, 58%, 57%);
 
     /* ### Neutral */
 
@@ -104,6 +104,7 @@ footer {
     width: 100%;
     height: 100%;
     display: flex;
+    align-items: center;
     justify-content: center;
 
 }
@@ -123,6 +124,16 @@ footer {
         linear-gradient(var(--Scissors-Gradient)) border-box;
 }
 
+.lizard-gradient {
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(var(--Lizard-Gradient)) border-box;
+}
+
+.spock-gradient {
+    background: linear-gradient(white, white) padding-box,
+        linear-gradient(var(--Spock-Gradient)) border-box;
+}
+
 .control-default-desing {
     border-radius: 50%;
     border: 10px solid transparent;
@@ -139,6 +150,7 @@ footer {
 .objects-container{
     width: 400px;
     height: 100%;
+    text-align: center;
     position: relative;
 }
 
@@ -257,11 +269,13 @@ main {
 }
 
 .winner-shadow {
-    box-shadow: hsla(228, 25%, 31%, 0.877) 0px 0px 0px 15px,
+    /* box-shadow: hsla(228, 25%, 31%, 0.877) 0px 0px 0px 15px,
         hsla(228, 25%, 31%, 0.781) 0px 0px 0px 40px,
-        hsla(228, 25%, 31%, 0.733) 0px 0px 0px 60px;
+        hsla(228, 25%, 31%, 0.733) 0px 0px 0px 60px; */
+    animation: animationShadowWinner 2s infinite;
     z-index: -1;
 }
+
 
 #play-again {
     padding: 10px 3rem;
@@ -274,9 +288,88 @@ main {
     cursor: pointer;
 }
 
+.header-btn-container{
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.v2{
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: .9rem;
+    color: var(--White);
+    margin-right: 1rem;
+    background-color: transparent;
+    border: 1px solid var(--White);
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+
+}
+
+.v2:hover{
+    animation: heartAnimationBtn 2s infinite;
+}
+
+.step-1-v2 :nth-child(2) {
+    top: 20%;
+    left: 70%;
+}
+
+.step-1-v2 :nth-child(3) {
+    top: -10%;
+    right: 35%;
+
+}
+
+.step-1-v2 :nth-child(4) {
+    top: 75%;
+    left: 70%;
+}
+
+.step-1-v2 :nth-child(5) {
+    top: 75%;
+    left: 10%;
+}
+
+.step-1-v2 :nth-child(6) {
+    top: 20%;
+    left: 0%;
+}
+
 .d-none {
     display: none;
 }
+
+@keyframes heartAnimationBtn {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+
+}
+
+@keyframes animationShadowWinner{
+    0%{
+        box-shadow: hsla(228, 25%, 31%, 0.877) 0px 0px 0px 15px;
+    }
+    50%{
+        box-shadow: hsla(228, 25%, 31%, 0.877) 0px 0px 0px 15px,
+        hsla(228, 25%, 31%, 0.781) 0px 0px 0px 40px;
+    }
+    100%{
+        box-shadow: hsla(228, 25%, 31%, 0.877) 0px 0px 0px 15px,
+        hsla(228, 25%, 31%, 0.781) 0px 0px 0px 40px,
+        hsla(228, 25%, 31%, 0.733) 0px 0px 0px 60px;
+    }
+}
+
 
 
 

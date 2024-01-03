@@ -15,16 +15,15 @@
 <body>
   <header>
     <img src="images/logo.svg" alt="logo-game" class="logo-game">
-    <div class="container-score">
-      <h5 class="title-score">Score</h5>
-      <span id="score">0</span>
-
+    <div class="header-btn-container">
+      <button class="v2" id="game-v1">Probar v2</button>
+      <div class="container-score">
+        <h5 class="title-score">Score</h5>
+        <span id="score">0</span>
+      </div>
     </div>
   </header>
   <main class="container">
-
-
-
     <section class="step-1">
       <div class="objects-container">
         <article class="container-triangle">
@@ -38,6 +37,30 @@
         </article>
         <article class="control-default-desing rock-gradient" id="option-to-pick">
           <img src="images/icon-rock.svg" alt="rock-figure">
+        </article>
+      </div>
+    </section>
+    <!-- V2 GAME SECTION -->
+
+    <section class="step-1 step-1-v2 d-none">
+      <div class="objects-container">
+        <article class="container-pentagon">
+          <img src="images/bg-pentagon.svg" alt="pentagon-figure">
+        </article>
+        <article class="control-default-desing paper-gradient" id="option-to-pick">
+          <img src="images/icon-paper.svg" alt="paper-figure">
+        </article>
+        <article class="control-default-desing scissors-gradient" id="option-to-pick">
+          <img src="images/icon-scissors.svg" alt="scissors-figure">
+        </article>
+        <article class="control-default-desing rock-gradient" id="option-to-pick">
+          <img src="images/icon-rock.svg" alt="rock-figure">
+        </article>
+        <article class="control-default-desing lizard-gradient" id="option-to-pick">
+          <img src="images/icon-lizard.svg" alt="lizard-figure">
+        </article>
+        <article class="control-default-desing spock-gradient" id="option-to-pick">
+          <img src="images/icon-spock.svg" alt="spock-figure">
         </article>
       </div>
     </section>
@@ -60,8 +83,9 @@
         <h2 class="who-whin">You Win</h2>
         <button id="play-again">Play Again</button>
       </article>
-
     </section>
+
+
 
     <section class="rules d-none">
       <h2>RULES</h2>
