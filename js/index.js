@@ -10,13 +10,16 @@ const $openRulesBtn = d.querySelector(".btn-open-rules"),
     $containerResults = d.querySelector(".results"),
     $score = d.querySelector("#score"),
     $btnChangeGameVersion = d.querySelector(".v2"),
-    $stepOneV2 = d.querySelector(".step-1-v2");
+    $stepOneV2 = d.querySelector(".step-1-v2"),
+    $imgRules= d.querySelector("#rules-image");
 
-const srcImgObjects = ["images/icon-paper.svg", "images/icon-scissors.svg", "images/icon-rock.svg"];
+const srcImgObjects = ["images/icon-paper.svg", "images/icon-scissors.svg", "images/icon-rock.svg","images/icon-lizard.svg","images/icon-spock.svg"];
 const objGradients = {
     "images/icon-paper.svg": "paper-gradient",
     "images/icon-scissors.svg": "scissors-gradient",
-    "images/icon-rock.svg": "rock-gradient"
+    "images/icon-rock.svg": "rock-gradient",
+    "images/icon-lizard.svg": "lizard-gradient",
+    "images/icon-spock.svg": "spock-gradient"
 }
 
 let score = 0;
@@ -38,14 +41,16 @@ d.addEventListener("click", e => {
         $imgYourObject.src = e.target.firstElementChild.getAttribute("src");
         $stepTwo.classList.remove("d-none");
         $stepOne.classList.add("d-none");
+        if(!$stepOneV2.classList.contains("d-none")) $stepOneV2.classList.add("d-none");
         automaticSelection();
         $imgYourObject.parentElement.classList.add(objGradients[$imgYourObject.getAttribute("src")]);
     }
-
+    
     if (e.target.matches("#option-to-pick > *")) {
         $imgYourObject.src = e.target.getAttribute("src");
         $stepTwo.classList.remove("d-none");
         $stepOne.classList.add("d-none");
+        if(!$stepOneV2.classList.contains("d-none")) $stepOneV2.classList.add("d-none");
         automaticSelection();
         $imgYourObject.parentElement.classList.add(objGradients[$imgYourObject.getAttribute("src")]);
     }
@@ -53,7 +58,12 @@ d.addEventListener("click", e => {
     if (e.target.matches("#play-again")) {
         $containerResults.classList.add("d-none");
         $stepTwo.classList.add("d-none");
-        $stepOne.classList.remove("d-none");
+        if($btnChangeGameVersion.id==="game-v2"){
+            $stepOneV2.classList.remove("d-none")
+        }else{
+
+            $stepOne.classList.remove("d-none");
+        }
 
 
         if ($imgHouseObject.parentElement.classList.contains("winner-shadow")) {
@@ -81,11 +91,13 @@ d.addEventListener("click", e => {
             $stepOne.classList.remove("d-none");
             $stepOneV2.classList.add("d-none");
             e.target.id= "game-v1";
+            $imgRules.src= "./images/image-rules.svg";
         } else if (e.target.id==="game-v1") {
             e.target.textContent = "ORIGINAL VERSION";
             $stepOne.classList.add("d-none");
             $stepOneV2.classList.remove("d-none");
             e.target.id= "game-v2";
+            $imgRules.src= "./images/image-rules-bonus.svg";
         }
     }
 });
@@ -93,10 +105,17 @@ d.addEventListener("click", e => {
 function automaticSelection() {
     let currentGradient = "";
     let randomIndex = Math.floor(Math.random() * 3);
+
     let iterator = -1;
     let interval = setInterval(() => {
         iterator++;
-        if (iterator == 3) iterator = 0;
+
+        if($btnChangeGameVersion.id==="game-v2"){
+            if (iterator == 5) iterator = 0;
+        }else{
+            if (iterator == 3) iterator = 0;
+
+        }
         $imgHouseObject.src = srcImgObjects[iterator];
         currentGradient = objGradients[$imgHouseObject.getAttribute("src")];
 
@@ -129,11 +148,11 @@ function whoWin(yourSelection, houseSelection) {
     if (yourSelection === houseSelection) {
         result = "DRAW";
     } else if ((yourSelection === "scissors-gradient" && houseSelection === "paper-gradient") ||
-        (yourSelection === "paper-gradient" && houseSelection === "rock-gradient") || (yourSelection === "rock-gradient" && houseSelection === "scissors-gradient")) {
+        (yourSelection === "paper-gradient" && houseSelection === "rock-gradient") || (yourSelection === "rock-gradient" && houseSelection === "scissors-gradient") || (yourSelection==="rock-gradient" && houseSelection==="lizard-gradient") || (yourSelection==="lizard-gradient" && houseSelection==="spock-gradient") || (yourSelection==="spock-gradient" && houseSelection==="scissors-gradient") || (yourSelection==="scissors-gradient" && houseSelection==="lizard-gradient") || (yourSelection==="paper-gradient" && houseSelection==="spock-gradient") || (yourSelection==="lizard-gradient" && houseSelection==="paper-gradient") || (yourSelection==="spock-gradient" && houseSelection==="rock-gradient") ) {
         result = "YOU WIN";
         score++;
     } else if ((houseSelection === "scissors-gradient" && yourSelection === "paper-gradient") ||
-        (houseSelection === "paper-gradient" && yourSelection === "rock-gradient") || (houseSelection === "rock-gradient" && yourSelection === "scissors-gradient")) {
+        (houseSelection === "paper-gradient" && yourSelection === "rock-gradient") || (houseSelection === "rock-gradient" && yourSelection === "scissors-gradient") || (houseSelection==="rock-gradient" && yourSelection==="lizard-gradient") || (houseSelection==="lizard-gradient" && yourSelection==="spock-gradient") || (houseSelection==="spock-gradient" && yourSelection==="scissors-gradient") || (houseSelection==="scissors-gradient" && yourSelection==="lizard-gradient") || (houseSelection==="paper-gradient" && yourSelection==="spock-gradient") || (houseSelection==="lizard-gradient" && yourSelection==="paper-gradient") || (houseSelection==="spock-gradient" && yourSelection==="rock-gradient")) {
         result = "HOUSE WIN";
         if (score > 0) score--;
     }
