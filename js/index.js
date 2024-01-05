@@ -11,7 +11,8 @@ const $openRulesBtn = d.querySelector(".btn-open-rules"),
     $score = d.querySelector("#score"),
     $btnChangeGameVersion = d.querySelector(".v2"),
     $stepOneV2 = d.querySelector(".step-1-v2"),
-    $imgRules= d.querySelector("#rules-image");
+    $imgRules= d.querySelector("#rules-image"),
+    $logoGame= d.querySelector(".logo-game");
 
 const srcImgObjects = ["images/icon-paper.svg", "images/icon-scissors.svg", "images/icon-rock.svg","images/icon-lizard.svg","images/icon-spock.svg"];
 const objGradients = {
@@ -38,6 +39,7 @@ d.addEventListener("click", e => {
     }
 
     if (e.target.matches("#option-to-pick")) {
+        $btnChangeGameVersion.setAttribute("disabled",true);
         $imgYourObject.src = e.target.firstElementChild.getAttribute("src");
         $stepTwo.classList.remove("d-none");
         $stepOne.classList.add("d-none");
@@ -47,6 +49,7 @@ d.addEventListener("click", e => {
     }
     
     if (e.target.matches("#option-to-pick > *")) {
+        $btnChangeGameVersion.setAttribute("disabled",true);
         $imgYourObject.src = e.target.getAttribute("src");
         $stepTwo.classList.remove("d-none");
         $stepOne.classList.add("d-none");
@@ -56,6 +59,7 @@ d.addEventListener("click", e => {
     }
 
     if (e.target.matches("#play-again")) {
+        $btnChangeGameVersion.removeAttribute("disabled",false);
         $containerResults.classList.add("d-none");
         $stepTwo.classList.add("d-none");
         if($btnChangeGameVersion.id==="game-v2"){
@@ -80,8 +84,6 @@ d.addEventListener("click", e => {
             if ($imgHouseObject.parentElement.classList.contains(objGradients[key])) {
                 $imgHouseObject.parentElement.classList.remove(objGradients[key]);
             }
-
-
         }
     }
 
@@ -92,12 +94,14 @@ d.addEventListener("click", e => {
             $stepOneV2.classList.add("d-none");
             e.target.id= "game-v1";
             $imgRules.src= "./images/image-rules.svg";
+            $logoGame.src= "./images/logo.svg";
         } else if (e.target.id==="game-v1") {
             e.target.textContent = "ORIGINAL VERSION";
             $stepOne.classList.add("d-none");
             $stepOneV2.classList.remove("d-none");
             e.target.id= "game-v2";
             $imgRules.src= "./images/image-rules-bonus.svg";
+            $logoGame.src= "./images/logo-bonus.svg";
         }
     }
 });

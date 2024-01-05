@@ -69,7 +69,7 @@ header {
 
 .logo-game {
     width: 120px;
-    height: 70px;
+    height: 90px;
 }
 
 .title-score {
@@ -112,26 +112,32 @@ footer {
 .paper-gradient {
     background: linear-gradient(white, white) padding-box,
         linear-gradient(var(--Paper-Gradient)) border-box;
+    box-shadow: hsl(230, 55%, 45%) 0px 5px 0px 0px;
+    
 }
 
 .rock-gradient {
     background: linear-gradient(white, white) padding-box,
-        linear-gradient(var(--Rock-Gradient)) border-box;
+    linear-gradient(var(--Rock-Gradient)) border-box;
+    box-shadow: hsl(349, 65%, 43%) 0px 5px 0px 0px;
 }
 
 .scissors-gradient {
     background: linear-gradient(white, white) padding-box,
-        linear-gradient(var(--Scissors-Gradient)) border-box;
+    linear-gradient(var(--Scissors-Gradient)) border-box;
+    box-shadow: hsl(39, 90%, 42%) 0px 5px 0px 0px;
 }
 
 .lizard-gradient {
     background: linear-gradient(white, white) padding-box,
-        linear-gradient(var(--Lizard-Gradient)) border-box;
+    linear-gradient(var(--Lizard-Gradient)) border-box;
+    box-shadow: hsl(261, 49%, 46%) 0px 5px 0px 0px;
 }
 
 .spock-gradient {
     background: linear-gradient(white, white) padding-box,
-        linear-gradient(var(--Spock-Gradient)) border-box;
+    linear-gradient(var(--Spock-Gradient)) border-box;
+    box-shadow: hsl(189, 53%, 45%) 0px 5px 0px 0px;
 }
 
 .control-default-desing {
@@ -145,6 +151,7 @@ footer {
     z-index: 1;
     position: absolute;
     cursor: pointer;
+    
 }
 
 .objects-container{
