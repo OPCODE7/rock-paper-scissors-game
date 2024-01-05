@@ -25,39 +25,35 @@ const objGradients = {
 
 let score = 0;
 
+const actionsChooseObject = () => {
+        $btnChangeGameVersion.setAttribute("disabled",true);
+        $stepTwo.classList.remove("d-none");
+        $stepOne.classList.add("d-none");
+        if(!$stepOneV2.classList.contains("d-none")) $stepOneV2.classList.add("d-none");
+        automaticSelection();
+        $imgYourObject.parentElement.classList.add(objGradients[$imgYourObject.getAttribute("src")]);
+}
+
 d.addEventListener("DOMContentLoaded", e => {
     $score.textContent = localStorage.getItem("score");
 });
 
 d.addEventListener("click", e => {
-    if (e.target === $openRulesBtn) {
-        $modalRules.classList.remove("d-none");
-    }
+    if (e.target === $openRulesBtn) $modalRules.classList.remove("d-none");
 
-    if (e.target === $closeRulesBtn) {
-        $modalRules.classList.add("d-none");
-    }
+    if (e.target === $closeRulesBtn) $modalRules.classList.add("d-none");
+    
 
     if (e.target.matches("#option-to-pick")) {
-        $btnChangeGameVersion.setAttribute("disabled",true);
         $imgYourObject.src = e.target.firstElementChild.getAttribute("src");
-        $stepTwo.classList.remove("d-none");
-        $stepOne.classList.add("d-none");
-        if(!$stepOneV2.classList.contains("d-none")) $stepOneV2.classList.add("d-none");
-        automaticSelection();
-        $imgYourObject.parentElement.classList.add(objGradients[$imgYourObject.getAttribute("src")]);
+        actionsChooseObject();
     }
     
     if (e.target.matches("#option-to-pick > *")) {
-        $btnChangeGameVersion.setAttribute("disabled",true);
         $imgYourObject.src = e.target.getAttribute("src");
-        $stepTwo.classList.remove("d-none");
-        $stepOne.classList.add("d-none");
-        if(!$stepOneV2.classList.contains("d-none")) $stepOneV2.classList.add("d-none");
-        automaticSelection();
-        $imgYourObject.parentElement.classList.add(objGradients[$imgYourObject.getAttribute("src")]);
+        actionsChooseObject();
     }
-
+    
     if (e.target.matches("#play-again")) {
         $btnChangeGameVersion.removeAttribute("disabled",false);
         $containerResults.classList.add("d-none");
@@ -65,15 +61,16 @@ d.addEventListener("click", e => {
         if($btnChangeGameVersion.id==="game-v2"){
             $stepOneV2.classList.remove("d-none")
         }else{
-
             $stepOne.classList.remove("d-none");
         }
 
+        const $parentImgHouseObject= $imgHouseObject.parentElement;
+        const $parentImgYourObject= $imgYourObject.parentElement;
 
-        if ($imgHouseObject.parentElement.classList.contains("winner-shadow")) {
-            $imgHouseObject.parentElement.classList.remove("winner-shadow");
-        } else if ($imgYourObject.parentElement.classList.contains("winner-shadow")) {
-            $imgYourObject.parentElement.classList.remove("winner-shadow");
+        if ($parentImgHouseObject.classList.contains("winner-shadow")) {
+            $parentImgHouseObject.classList.remove("winner-shadow");
+        } else if ($parentImgYourObject.classList.contains("winner-shadow")) {
+            $parentImgYourObject.classList.remove("winner-shadow");
         }
 
         for (const key in objGradients) {
@@ -113,17 +110,15 @@ function automaticSelection() {
     let iterator = -1;
     let interval = setInterval(() => {
         iterator++;
-
         if($btnChangeGameVersion.id==="game-v2"){
             if (iterator == 5) iterator = 0;
         }else{
             if (iterator == 3) iterator = 0;
-
         }
         $imgHouseObject.src = srcImgObjects[iterator];
         currentGradient = objGradients[$imgHouseObject.getAttribute("src")];
 
-        $imgHouseObject.parentElement.setAttribute("class", `picked-img control-default-desing ${currentGradient}`);
+        $imgHouseObject.parentElement.setAttribute("class", `picked-img control-default-design ${currentGradient}`);
 
     }, 300);
 
@@ -163,3 +158,5 @@ function whoWin(yourSelection, houseSelection) {
 
     return result;
 }
+
+
