@@ -86,7 +86,7 @@ d.addEventListener("click", e => {
 
     if (e.target === $btnChangeGameVersion) {
         if (e.target.id === "game-v2") {
-            e.target.textContent = "PROBAR V2";
+            e.target.textContent = "TRY V2";
             $stepOne.classList.remove("d-none");
             $stepOneV2.classList.add("d-none");
             e.target.id= "game-v1";
